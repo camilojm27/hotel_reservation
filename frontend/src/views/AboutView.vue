@@ -4,12 +4,13 @@
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
+<style scoped>
+
+   html {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    background-color: aliceblue;
   }
-}
+
 </style>
