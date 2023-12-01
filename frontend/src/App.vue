@@ -1,86 +1,39 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import Toaster from '@/components/ui/toast/Toaster.vue'
+import { Toaster } from '@/components/ui/toast'
 </script>
 
 <template>
   <header>
-      <Toaster />
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-      </nav>
-    </div>
+    <nav class="flex items-center justify-between p-4 bg-gray-900 text-white">
+      <div class="flex items-center">
+        <img
+          alt="Hotel Logo"
+          src="@/assets/hotel-building-svgrepo-com.svg"
+          width="70"
+          height="70"
+        />
+        <span class="text-xl font-bold">Hotel App</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <router-link to="/" class="hover:bg-gray-700 px-2 py-1 rounded">Home</router-link>
+        <router-link to="/hotels" class="hover:bg-gray-700 px-2 py-1 rounded"
+          >CrudHotel</router-link
+        >
+        <router-link to="/bookings" class="hover:bg-gray-700 px-2 py-1 rounded"
+          >CrudBookings</router-link
+        >
+        <router-link to="/clients" class="hover:bg-gray-700 px-2 py-1 rounded"
+          >CrudReservations</router-link
+        >
+      </div>
+    </nav>
   </header>
+  <main>
+    <Toaster />
 
-  <RouterView />
+
+    <RouterView />
+  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+<style scoped></style>

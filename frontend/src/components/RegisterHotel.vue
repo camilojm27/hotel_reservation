@@ -13,6 +13,8 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import axiosInstance from "@/lib/axios";
+import {toast} from "@/components/ui/toast";
 
 const formSchema = toTypedSchema(
   z.object({
@@ -31,12 +33,28 @@ const form = useForm({
 })
 
 const onSubmit = form.handleSubmit((values) => {
+
+    axiosInstance.post('/hotels', values)
+        .then(response => {
+          if (response.status != 201){
+            toast({
+              description: 'El hotel ha sido creado correctamente',
+            });
+          }
+        }).catch(reason => {
+
+      toast({
+        title: 'Error',
+        description: 'No es posible crear el hotel en este momento, intenta más tarde',
+        variant: 'destructive',
+      });
+    })
   console.log('Form submitted!', values)
 })
 </script>
 
 <template>
-  <form @submit="onSubmit" class="grid grid-cols-2 gap-4">
+  <form @submit.prevent="onSubmit" class="grid grid-cols-2 gap-4">
     <FormField v-slot="{ componentField }" name="name">
       <FormItem>
         <FormLabel>Nombre del hotel</FormLabel>
@@ -100,6 +118,6 @@ const onSubmit = form.handleSubmit((values) => {
         <FormMessage />
       </FormItem>
     </FormField>
-    <Button type="submit"> Registrar Hotel </Button>
+    <Button class="col-span-2" type="submit"> Registrar Hotel </Button>
   </form>
 </template>

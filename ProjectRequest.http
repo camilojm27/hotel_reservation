@@ -1,0 +1,28 @@
+POST http://127.0.0.1:8000/api/hotel
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "sfgsf",
+  "address": "content",
+  "country": "content",
+  "state": "content",
+  "nit": "content",
+  "phone": "content"
+}
+
+### GET request with a header
+GET http://localhost:8000/api/hotel
+Content-Type: application/json
+Accept: application/json
+
+### Hotel
+DELETE http://localhost:8000/api/hotel/5
+Content-Type: application/json
+Accept: application/json
+
+
+### Bookings
+GET http://172.28.103.33:8000/api/bookings
+Content-Type: application/json
+Accept: application/json

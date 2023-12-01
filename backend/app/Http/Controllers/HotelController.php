@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreHotelRequest;
 use App\Http\Requests\UpdateHotelRequest;
 use App\Models\Hotel;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class HotelController extends Controller
 {
@@ -20,18 +22,26 @@ class HotelController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
      */
     public function store(StoreHotelRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $hotel = new Hotel();
+        $hotel->fill($validated);
+        $hotel->save();
+        return response($hotel->toJson(), ResponseAlias::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Hotel $hotel)
+    public function show($id)
     {
-        //
+        $post = Hotel::findOrFail($id);
+
+        // Return the post as a JSON response
+        return response()->json($post, ResponseAlias::HTTP_OK);
     }
 
     /**
@@ -39,7 +49,14 @@ class HotelController extends Controller
      */
     public function update(UpdateHotelRequest $request, Hotel $hotel)
     {
-        //
+        // Validate the request data
+        $validated = $request->validated();
+
+        // Update the hotel with the request data
+        $hotel->update($validated);
+
+        // Return the updated hotel as a JSON response
+        return response()->json($hotel, ResponseAlias::HTTP_OK);
     }
 
     /**
@@ -47,6 +64,8 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        $hotel->delete();
+        
+        return response()->json(['message' => 'Hotel deleted successfully'], ResponseAlias::HTTP_OK);
     }
 }
