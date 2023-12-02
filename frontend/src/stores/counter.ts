@@ -18,6 +18,15 @@ export const useHotelStore = defineStore('hotelStore', {
     getBookings(): any {
       return this.bookings
     },
+    getClients(): any {
+      return this.clients
+    },
+    hasHotels(): boolean {
+      if (this.hotels== null){
+        return false
+      }
+      return this.hotels.length > 0;
+    },
   },
 
   actions: {
@@ -28,12 +37,13 @@ export const useHotelStore = defineStore('hotelStore', {
     },
     fetchBookings() {
       axios.get('/bookings').then((response) => {
-        this.hotels = response.data
+        this.bookings = response.data
       })
+      return this.hotels
     },
     fetchClients() {
       axios.get('/clients').then((response) => {
-        this.hotels = response.data
+        this.clients = response.data
       })
     },
     delete(id: number, model: string) {

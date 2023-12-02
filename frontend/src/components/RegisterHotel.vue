@@ -14,8 +14,9 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import axiosInstance from "@/lib/axios";
-import {toast} from "@/components/ui/toast";
-
+import { useToast } from "@/components/ui/toast";
+import router from "@/router";
+const { toast } = useToast()
 const formSchema = toTypedSchema(
   z.object({
     name: z.string().min(2).max(50),
@@ -36,11 +37,14 @@ const onSubmit = form.handleSubmit((values) => {
 
     axiosInstance.post('/hotels', values)
         .then(response => {
-          if (response.status != 201){
+          if (response.status == 201){
             toast({
+              title: 'Hotel Creado',
               description: 'El hotel ha sido creado correctamente',
             });
           }
+          router.push('/bookings')
+
         }).catch(reason => {
 
       toast({

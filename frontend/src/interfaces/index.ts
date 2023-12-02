@@ -136,6 +136,42 @@ export const columnsBooking: ColumnDef<Booking>[] = [
     enableSorting: false,
   }
 ]
+export const columnsClient: ColumnDef<Client>[] = [
+  {
+    accessorKey: 'id',
+    header: 'ID',
+  },
+  {
+    accessorKey: 'fullname',
+    header: 'Nombre Completo',
+  },
+  {
+    accessorKey: 'personal_id',
+    header: 'Cedula de Identificación',
+  },
+  {
+    accessorKey: 'created_at',
+    header: 'Created At',
+    //TODO: Cast
+  },
+  {
+    accessorKey: 'updated_at',
+    header: 'Updated At',
+    // cell: info => new Date(Date.parse(info.getValue())),
+  },
+  {
+    accessorKey: 'edit',
+    header: ' ',
+    cell: ({ row }) => h(EditButton, { id: row.original.id, model: 'bookings' }),
+    enableSorting: false,
+  },
+  {
+    accessorKey: 'delete',
+    header: ' ',
+    cell: ({ row }) => h(DeleteButton, { id: row.original.id, model: 'bookings' }),
+    enableSorting: false,
+  }
+]
 
 
 export interface store {

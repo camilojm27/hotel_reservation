@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Toaster } from '@/components/ui/toast'
-</script>
+import Toaster from '@/components/ui/toast/Toaster.vue'</script>
 
 <template>
   <header>
@@ -12,26 +11,25 @@ import { Toaster } from '@/components/ui/toast'
           width="70"
           height="70"
         />
-        <span class="text-xl font-bold">Hotel App</span>
+        <router-link to="/" class="text-xl font-bold">Hotel App</router-link>
       </div>
       <div class="flex items-center space-x-4">
         <router-link to="/" class="hover:bg-gray-700 px-2 py-1 rounded">Home</router-link>
         <router-link to="/hotels" class="hover:bg-gray-700 px-2 py-1 rounded"
-          >CrudHotel</router-link
+          >Informacón del Hotel</router-link
         >
         <router-link to="/bookings" class="hover:bg-gray-700 px-2 py-1 rounded"
-          >CrudBookings</router-link
+          >Reservas</router-link
         >
         <router-link to="/clients" class="hover:bg-gray-700 px-2 py-1 rounded"
-          >CrudReservations</router-link
+          >Clientes</router-link
         >
       </div>
     </nav>
   </header>
+  <Toaster />
+
   <main>
-    <Toaster />
-
-
     <RouterView />
   </main>
 </template>

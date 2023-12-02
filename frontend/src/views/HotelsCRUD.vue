@@ -31,7 +31,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="container py-10 mx-auto">
+  <div>
     <div v-if="hotels == null">
       <p>There are 0 hotels available.</p>
     </div>

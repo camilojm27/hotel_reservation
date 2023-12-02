@@ -16,7 +16,7 @@ class BookingController extends Controller
     public function index(): JsonResponse
     {
         //Todo: Cache, Pagination
-        $bookings = Booking::with(['client', 'hotel'])->get();
+        $bookings = Booking::all();
 
         return response()->json($bookings, ResponseAlias::HTTP_OK);
     }
