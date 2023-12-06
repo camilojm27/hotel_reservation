@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import RegisterHotel from '../components/RegisterHotel.vue'
+import RegisterHotel from './RegisterHotel.vue'
 import { useHotelStore } from '@/stores/counter'
 import { defineComponent, onMounted } from 'vue'
 import { columnsHotel } from '@/interfaces'

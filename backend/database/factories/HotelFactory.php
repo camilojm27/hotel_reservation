@@ -16,11 +16,16 @@ class HotelFactory extends Factory
      */
     public function definition(): array
     {
+        $location = random_int(0,3);
+        $states = ['Valle del Cauca', 'Atlantico', 'Nariño','Cundinamarca'];
+        $citys = ['Cali', 'Barranquilla', 'Pasto','Bogotá'];
+
         return [
             'name' => $this->faker->unique()->name,
             'address' => $this->faker->address,
             'country' => 'Colombia',
-            'state' => $this->faker->randomElement(['Valle del Cauca', 'Atlantico', 'Nariño','Cundinamarca']),
+            'state' => $states[$location],
+            'city' => $citys[$location],
             'nit' => $this->faker->randomNumber(9),
             'phone' => $this->faker->phoneNumber()
         ];

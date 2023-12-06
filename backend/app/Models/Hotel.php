@@ -10,7 +10,7 @@ class Hotel extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'country', 'state', 'nit', 'phone'];
+    protected $fillable = ['name', 'address', 'country', 'state','city', 'nit', 'phone'];
 
     public function bookings(): HasMany
     {

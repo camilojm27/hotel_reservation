@@ -15,7 +15,7 @@ import Toaster from '@/components/ui/toast/Toaster.vue'</script>
       </div>
       <div class="flex items-center space-x-4">
         <router-link to="/" class="hover:bg-gray-700 px-2 py-1 rounded">Home</router-link>
-        <router-link to="/hotels" class="hover:bg-gray-700 px-2 py-1 rounded"
+        <router-link to="/hotels/edit" class="hover:bg-gray-700 px-2 py-1 rounded"
           >Informacón del Hotel</router-link
         >
         <router-link to="/bookings" class="hover:bg-gray-700 px-2 py-1 rounded"

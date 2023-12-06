@@ -38,7 +38,7 @@ class HotelController extends Controller
      */
     public function show($id)
     {
-        $post = Hotel::findOrFail($id);
+        $post = Hotel::first();
 
         // Return the post as a JSON response
         return response()->json($post, ResponseAlias::HTTP_OK);
@@ -65,7 +65,7 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         $hotel->delete();
-        
+
         return response()->json(['message' => 'Hotel deleted successfully'], ResponseAlias::HTTP_OK);
     }
 }

@@ -23,7 +23,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/hotels',
+      path: '/hotels/edit',
       name: 'HotelsCRUD',
       component: HotelsCRUD
     },

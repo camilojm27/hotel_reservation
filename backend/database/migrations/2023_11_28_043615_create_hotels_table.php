@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('address')->unique();
             $table->string('country');
             $table->string('state');
+            $table->string('city');
             $table->string('nit')->unique();  //de tipo string por el digito de verificación
             $table->string('phone')->nullable();
             $table->timestamps();
